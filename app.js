@@ -43,4 +43,25 @@ function addTodo(event){
 
     // After a new item is appended to the list, clear the value from todoInput
     todoInput.value = "";
+
+}
+
+
+function deleteCheck(e) {
+    const item = e.target;
+    //Delet Todo
+    if(item.classList[0] === "trash-btn") {
+        const todo = item.parentElement;
+        //CSS Fall animation makes item appear to fall off list
+        todo.classList.add("fall");
+        todo.addEventListener('transitionend', function(){
+            todo.remove();
+        })
+    }
+
+    //Check mark
+    if (item.classList[0] === "complete-btn") {
+        const todo = item.parentElement;
+        todo.classList.toggle("completed");
+    }
 }
